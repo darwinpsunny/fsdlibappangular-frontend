@@ -1,0 +1,20 @@
+<div class="signupbox">
+            <form class="form" method="" action="" (ngSubmit)="userverify();">
+              <h2>LOGIN</h2><br>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" [(ngModel)]="user.email "name="email" class="form-control" id="Email" (keyup)="changeColour($event)"[ngStyle]="{'color': eColor,'border-color':eColor}" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" [(ngModel)]="user.password "name="password" class="form-control" id="Password1" (keyup)="password1validate($event)" [ngStyle]="{'color': pColor,'border-color':pColor}" placeholder="Password">
+                <small id="Password1help" [ngStyle]="{'color': pColor}" class="form-text ">{{strength}}</small>
+              </div><br>
+              
+             
+              <label id="failtologin" for=""  >{{message}}</label><br>
+              <button type="submit" [disabled]="!(ebool && pbool)"class="btn btn-primary">signin</button>
+            </form>
+          </div>
+        

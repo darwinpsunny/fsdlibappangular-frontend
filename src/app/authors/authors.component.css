@@ -1,0 +1,33 @@
+
+ .form input{
+    width: 70%;
+    height:100%;
+    margin: auto;
+    columns: #1b42a5;
+    padding-top: 20px;
+    border:none;
+    border-bottom: 3px solid rgb(37, 97, 209);
+   
+
+}
+.col-sm-9{
+    margin-left: auto;
+}
+.btn-danger{
+    margin-left: 150px;
+}
+
+.img-circle{
+    border-radius: 50%;
+}
+.signupbox{
+    
+    border-radius: 10px;
+   
+  
+    
+    text-align: center;
+    align-items: center;
+    box-shadow: -6px -6px 10px rgba(10, 0, 5, 0.151),6px 6px 10px rgba(3, 0, 0, 0.6);
+    
+}

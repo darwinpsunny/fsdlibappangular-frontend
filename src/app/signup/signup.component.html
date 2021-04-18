@@ -1,0 +1,27 @@
+<div class="signupbox"> 
+    <form class="form"  action=""  method=""   (ngSubmit)="useradd();"onsubmit=" return validatesignup();">
+      <h2>sign up</h2><br>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="text" class="form-control"[(ngModel)]="user.email" [ngStyle]="{'color': eColor,'border-color':eColor}"  name="email" id="Email"  (keyup)="emailvalidate($event);"  placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div><br>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="exampleInputEmail1">Phone number</label>
+        <input type="text" name="phonenumber" [(ngModel)]="user.phonenumber" [ngStyle]="{'color': ncolor,'border-color':ncolor}" class="form-control" id="number" (keyup)="numbervalidate($event);" placeholder="Enter phone number">
+        <small id="numberhelp" class="form-text text-muted">{{ntext}}</small>
+      </div><br>
+      <div class="form-group mx-sm-3 mb-2 ">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" [(ngModel)]='user.password'[ngStyle]="{'color': pColor,'border-color':pColor}" name="password1" class="form-control" id="Password1" (keyup)="password1validate($event);password2validate($event);" placeholder="Password">
+        <small id="Password1help" [ngStyle]="{'color': pColor,'border-color':pColor}"class="form-text ">{{strength}}</small>
+      </div><br>
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="exampleInputPassword1">Confirm Password</label>
+        <input type="password"  [(ngModel)]='password2'  name="password2"[ngStyle]="{'color': p2color,'border-color':p2color}" class="form-control" (keyup)="password2validate($event);password1validate($event);" placeholder="Password">
+        <small id="Password2help" [ngStyle]="{'color': p2color,'border-color':p2color}"  class="form-text ">{{text}}</small>
+      </div><br>
+     
+      <button type="submit"[disabled]="!(ebool && pbool && nbool && p2bool)" class=" btn btn-primary">Submit</button>
+    </form>
+  </div>

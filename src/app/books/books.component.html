@@ -1,0 +1,197 @@
+<div id="masthead">  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <h1>books
+            <p class="lead"></p>
+          </h1>
+        </div>
+        <div class="col-md-5">
+          <div class="well well-lg"> 
+            <div class="row">
+              <div class="col-sm-12">
+                
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addauthor">
+                  Add new book
+         </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div><!-- /cont -->
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="top-spacer"> </div>
+        </div>
+      </div> 
+    </div><!-- /cont -->
+    
+  </div>
+  
+  
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-12"> 
+        
+        <div class="panel">
+          <div class="panel-body">
+            
+            
+            
+            <!--/stories-->
+            
+              
+            <div class=" card-body card-deck bg-aqua" *ngFor="let i of books,let x = index" > 
+              <div class="modal fade signupbox"  id="a{{x}}" tabindex="-1"  role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title" id="exampleModalLongTitle">Update book {{i.title}}</h1>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form" method=""  action=""  enctype="multipart/form-data"  >
+                       
+                        <input type="hidden" class="form-control" id="Email" name="_id" value="{{i._id}}" placeholder="Enter title of the book">
+                        <div class="form-group mx-sm-3 mb-2">
+                          <label for="exampleInputEmail1">title</label>
+                          <input type="text" class="form-control" id="Email" name="title"   [(ngModel)]="book.title" placeholder="Enter name of the author">
+                          
+                        </div><br>
+                        <div class="form-group mx-sm-3 mb-2">
+                          <label for="exampleInputEmail1">Author </label>
+                          <input type="text" class="form-control" id="number" name="author"[(ngModel)]="book.author" placeholder="Enter the genre of author">
+                          <small id="numberhelp" class="form-text text-muted"></small>
+                        </div><br>
+                        <div class="form-group mx-sm-3 mb-2">
+                          <label for="exampleInputEmail1">genre</label>
+                          <input type="text" class="form-control" id="number" name="genre" [(ngModel)]="book.genre"placeholder="Enter the  books written (seperate by commas)">
+                          <small id="numberhelp" class="form-text text-muted"></small>
+                        </div><br>
+                        <div class="form-group mx-sm-3 mb-2">
+                          <label for="exampleInputEmail1">description</label>
+                          <input type="textarea" class="form-control" id="number" name="details" [(ngModel)]="book.details"placeholder="Enter  any details about book">
+                          <small id="numberhelp" class="form-text text-muted"></small>
+                        </div><br>
+                       
+                        
+                        <div class="form-group mx-sm-3 mb-2">
+                          <label for="exampleInputPassword1">Photo of book</label>
+                          <input type="file" class="form-control" name="image" id="bkimg" (change)="onfileselect($event)"[(ngModel)]="book.image" placeholder="">
+                          
+                        </div><br>
+                       
+                        <div class="modal-footer">
+                           
+                            <button type="submit" (click)="updatebook(i._id);"class="btn btn-primary" data-dismiss="modal">  Save changes</button >
+                          </div>
+                      </form>
+                    </div>
+                    
+                  </div>
+                </div>
+              
+              
+              </div>    
+              <br>
+              <div class="col-md-2 col-sm-3 text-center">
+                <a class="story-title" href="#"><img alt="" src="https://fsdlibappangularbackend.herokuapp.com/{{i.image}}" style="width:100px;height:100px" class="img-circle"></a>
+              </div>
+              <div class="col-md-10 col-sm-9">
+                <h3>{{i.title}}</h3><br>
+                <div class="row">
+                  <div class="col-xs-9">
+                    <h4><span class="label label-default">{{i.author}}</span></h4><h4>
+                    <small style="font-family:courier,'new courier';" class="text-muted">{{i.genre}}<a href="/book" (click)="bookabout(i._id)"class="text-muted"> Read More</a></small>
+                    </h4></div>
+                    <form action="" method="">
+                      <button type="submit"  (click)="deletebook(i._id)" class=" btn btn-danger">Delete</button>
+                    </form>
+                  <div class="col-xs-3">
+                    
+                  </div>
+                </div>         <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#a' + x">
+                  update
+         </button>
+                <br><br>
+              </div><br><br>
+            </div><br><br><br><br>
+            <hr>
+          
+          
+            
+             <!--/stories-->
+             <div class="modal fade signupbox"  id="addauthor" tabindex="-1"  role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalLongTitle">Add book</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="form" method=""  action=""  enctype="multipart/form-data"  >
+                     
+                      <input type="hidden" class="form-control" id="Email" name="_id" value="" placeholder="Enter title of the book">
+                      <div class="form-group mx-sm-3 mb-2">
+                        <label for="exampleInputEmail1">title</label>
+                        <input type="text" class="form-control" id="Email" name="title"   [(ngModel)]="book.title" placeholder="Enter name of the author">
+                        
+                      </div><br>
+                      <div class="form-group mx-sm-3 mb-2">
+                        <label for="exampleInputEmail1">Author </label>
+                        <input type="text" class="form-control" id="number" name="author"[(ngModel)]="book.author" placeholder="Enter the genre of author">
+                        <small id="numberhelp" class="form-text text-muted"></small>
+                      </div><br>
+                      <div class="form-group mx-sm-3 mb-2">
+                        <label for="exampleInputEmail1">genre</label>
+                        <input type="text" class="form-control" id="number" name="genre" [(ngModel)]="book.genre"placeholder="Enter the  books written (seperate by commas)">
+                        <small id="numberhelp" class="form-text text-muted"></small>
+                      </div><br>
+                      <div class="form-group mx-sm-3 mb-2">
+                        <label for="exampleInputEmail1">description</label>
+                        <input type="textarea" class="form-control" id="number" name="details" [(ngModel)]="book.details"placeholder="Enter the any details about author ">
+                        <small id="numberhelp" class="form-text text-muted"></small>
+                      </div><br>
+                     
+                      
+                      <div class="form-group mx-sm-3 mb-2">
+                        <label for="exampleInputPassword1">Photo of book</label>
+                        <input type="file" class="form-control" name="image" id="bkimg" (change)="onfileselect($event)"[(ngModel)]="book.image" placeholder="">
+                        
+                      </div><br>
+                     
+                      <div class="modal-footer">
+                         
+                          <button type="submit" (click)="addbook();"class="btn btn-primary" data-dismiss="modal">  Save changes</button >
+                        </div>
+                    </form>
+                  </div>
+                  
+                </div>
+              </div>
+            
+            
+            </div>  
+             
+             
+           
+             
+           </div>
+         </div>
+                                                                                          
+                                                       
+                                                         
+          </div><!--/col-12-->
+     </div>
+   </div>
+            
+            
+           
